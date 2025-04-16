@@ -32,6 +32,7 @@ class BankAccount{
             if(this.initialBalance>=amount){
                 this.withDraw(amount)
                 anotherAccount.deposit(amount);
+                
             }
             else{
                 console.log("Insuffecient balance.")
@@ -41,20 +42,46 @@ class BankAccount{
             console.log("Invalid input!")
         }
     }
-    print(){
-        console.log(this.history);
+    printHistory(){
+       console.log(`Deposited $${this.history[0]}, WithDrew $${this.history[1]}`);
     }
     getSummary(){
         console.log(`${this.ownerName}'s balance is $${this.initialBalance}`);
     }
 
 }
-array=[0,0]
-const acc1=new BankAccount("ali",400,array);
-const acc2=new BankAccount("bob",100,array);
-console.log(acc1);
-acc1.deposit(100);
-acc1.print();
-acc1.withDraw(50);
-acc1.print();
+
+const acc1=new BankAccount("ali",400,[0,0]);
+const acc2=new BankAccount("bob",100,[0,0]);
+
+console.log("=============")
+acc1.getSummary();
+acc2.getSummary();
+console.log("=============")
+acc1.deposit(400);
+acc2.deposit(500);
+acc1.printHistory();
+acc2.printHistory();
+console.log("=============")
+acc1.getSummary();
+acc2.getSummary();
+console.log("=============");
+acc1.withDraw(200);
+acc2.withDraw(200);
+console.log("=============")
+acc1.getSummary();
+acc2.getSummary();
+acc1.printHistory()
+acc2.printHistory();
+console.log("=============")
+acc1.getSummary();
+acc2.getSummary();
+console.log("=============");
+acc1.transferTo(acc2,200);
+acc1.printHistory();
+acc2.printHistory();
+console.log("=============");
+acc1.getSummary();
+acc2.getSummary();
+console.log("=============");
 
