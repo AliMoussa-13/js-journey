@@ -17,10 +17,30 @@ let s3=new Student("Charlie",score3);
 function calculateAverage(scoreArray){
     let sum=0;
     for(let i=0;i<scoreArray.length;i++){
-        sum+=scoreArray.at(i)
+        sum+=scoreArray[i];
     }
-    return (sum/scoreArray.length)
+    return (sum/scoreArray.length);
+}
+function calculateGrade(grade){
+    if(grade>=90){
+        return "A"
+    }
+    if(grade>=80){
+        return "B"
+    }
+    if(grade>=70){
+        return "C"
+    }
+    else{
+        return "F"
+    }
+}
+function generateReports(students){
+    average= calculateAverage(students.scores);
+    grade=calculateGrade(average);
+    console.log(`Name: ${students.name},average: ${average},grade: ${grade}`);
 }
 
-
-console.log(calculateAverage(s1.scores))
+generateReports(s1);
+generateReports(s2);
+generateReports(s3);
